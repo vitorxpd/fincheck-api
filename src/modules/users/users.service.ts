@@ -10,7 +10,7 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     const { email, name, password } = createUserDto;
 
-    const emailTaken = await this.usersRepository.findByEmail({
+    const emailTaken = await this.usersRepository.findUnique({
       where: { email },
       select: { id: true },
     });
